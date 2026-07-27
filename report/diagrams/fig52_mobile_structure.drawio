@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <mxCell id="2" value=""
+      style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D1117;strokeColor=#30363D;fontColor=#FFFFFF;align=center;verticalAlign=top;arcSize=3;"
+      vertex="1" parent="1">
+      <mxGeometry x="57" y="50" width="1540" height="900" as="geometry"/>
+    </mxCell>
+    <mxCell id="3" value="Figure 5.2 — Mobile Application File Structure"
+      style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=16;fontStyle=1;fontColor=#FFFFFF;"
+      vertex="1" parent="1">
+      <mxGeometry x="77" y="62" width="1500" height="44" as="geometry"/>
+    </mxCell>
+    <mxCell id="4" value="&lt;b style=&quot;font-size:13px;color:#58A6FF;font-family:Arial,sans-serif;&quot;&gt;Root &amp; Configuration&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;font-family:&apos;Courier New&apos;,monospace;font-size:10.5px;color:#E6EDF3;line-height:1.55;&quot;&gt;mobile/&lt;br/&gt;├── App.js&lt;br/&gt;│   Root component&lt;br/&gt;│   Navigation setup&lt;br/&gt;│   Redux Provider&lt;br/&gt;│&lt;br/&gt;├── app.json&lt;br/&gt;│   Expo config&lt;br/&gt;│   app name, icons&lt;br/&gt;│&lt;br/&gt;├── eas.json&lt;br/&gt;│   EAS Build config&lt;br/&gt;│   iOS + Android&lt;br/&gt;│&lt;br/&gt;├── package.json&lt;br/&gt;│   Dependencies&lt;br/&gt;│&lt;br/&gt;├── babel.config.js&lt;br/&gt;└── .env&lt;br/&gt;    API URL&lt;br/&gt;    SUPABASE keys&lt;/span&gt;"
+      style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161B22;strokeColor=#30363D;fontColor=#E6EDF3;align=left;verticalAlign=top;arcSize=4;spacingLeft=10;spacingTop=10;"
+      vertex="1" parent="1">
+      <mxGeometry x="69" y="170" width="362" height="760" as="geometry"/>
+    </mxCell>
+    <mxCell id="5" value="&lt;b style=&quot;font-size:13px;color:#FFA657;font-family:Arial,sans-serif;&quot;&gt;Screens (Views)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;font-family:&apos;Courier New&apos;,monospace;font-size:10.5px;color:#E6EDF3;line-height:1.55;&quot;&gt;src/screens/&lt;br/&gt;├── Auth/&lt;br/&gt;│   ├── LoginScreen.js&lt;br/&gt;│   ├── RegisterScreen.js&lt;br/&gt;│   └── OTPScreen.js&lt;br/&gt;│&lt;br/&gt;├── Leads/&lt;br/&gt;│   ├── LeadsListScreen.js&lt;br/&gt;│   ├── LeadDetailScreen.js&lt;br/&gt;│   ├── AddLeadScreen.js&lt;br/&gt;│   └── CollectLeadScreen.js&lt;br/&gt;│&lt;br/&gt;├── Analytics/&lt;br/&gt;│   └── DashboardScreen.js&lt;br/&gt;│&lt;br/&gt;├── Notifications/&lt;br/&gt;│   └── NotifScreen.js&lt;br/&gt;│&lt;br/&gt;└── Settings/&lt;br/&gt;    ├── ProfileScreen.js&lt;br/&gt;    └── SyncStatusScreen.js&lt;/span&gt;"
+      style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161B22;strokeColor=#30363D;fontColor=#E6EDF3;align=left;verticalAlign=top;arcSize=4;spacingLeft=10;spacingTop=10;"
+      vertex="1" parent="1">
+      <mxGeometry x="445" y="170" width="362" height="760" as="geometry"/>
+    </mxCell>
+    <mxCell id="6" value="&lt;b style=&quot;font-size:13px;color:#D2A8FF;font-family:Arial,sans-serif;&quot;&gt;State &amp; Services&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;font-family:&apos;Courier New&apos;,monospace;font-size:10.5px;color:#E6EDF3;line-height:1.55;&quot;&gt;src/store/&lt;br/&gt;├── store.js&lt;br/&gt;│   Redux store config&lt;br/&gt;├── slices/&lt;br/&gt;│   ├── authSlice.js&lt;br/&gt;│   ├── leadsSlice.js&lt;br/&gt;│   └── syncSlice.js&lt;br/&gt;└── api/&lt;br/&gt;    └── apiSlice.js&lt;br/&gt;        RTK Query endpoints&lt;br/&gt;        /leads, /auth, /ai&lt;br/&gt;&lt;br/&gt;src/services/&lt;br/&gt;├── supabaseClient.js&lt;br/&gt;│   Realtime subscription&lt;br/&gt;├── syncQueue.js&lt;br/&gt;│   AsyncStorage queue&lt;br/&gt;│   Offline-first logic&lt;br/&gt;└── notificationService.js&lt;br/&gt;    FCM token register&lt;/span&gt;"
+      style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161B22;strokeColor=#30363D;fontColor=#E6EDF3;align=left;verticalAlign=top;arcSize=4;spacingLeft=10;spacingTop=10;"
+      vertex="1" parent="1">
+      <mxGeometry x="821" y="170" width="362" height="760" as="geometry"/>
+    </mxCell>
+    <mxCell id="7" value="&lt;b style=&quot;font-size:13px;color:#7EE787;font-family:Arial,sans-serif;&quot;&gt;Components &amp; Navigation&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;font-family:&apos;Courier New&apos;,monospace;font-size:10.5px;color:#E6EDF3;line-height:1.55;&quot;&gt;src/components/&lt;br/&gt;├── LeadCard.js&lt;br/&gt;│   Lead list item UI&lt;br/&gt;├── QualityBadge.js&lt;br/&gt;│   AI score badge&lt;br/&gt;├── SyncIndicator.js&lt;br/&gt;│   Online/offline status&lt;br/&gt;├── AIScorePanel.js&lt;br/&gt;│   Cascade result view&lt;br/&gt;└── OfflineBanner.js&lt;br/&gt;    Queue size display&lt;br/&gt;&lt;br/&gt;src/navigation/&lt;br/&gt;├── AppNavigator.js&lt;br/&gt;│   Stack + Tab nav&lt;br/&gt;│   Auth guard&lt;br/&gt;└── AuthNavigator.js&lt;br/&gt;    Login / Register&lt;br/&gt;    OTP flow routing&lt;/span&gt;"
+      style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161B22;strokeColor=#30363D;fontColor=#E6EDF3;align=left;verticalAlign=top;arcSize=4;spacingLeft=10;spacingTop=10;"
+      vertex="1" parent="1">
+      <mxGeometry x="1197" y="170" width="362" height="760" as="geometry"/>
+    </mxCell>
+    <mxCell id="8" value="Figure 5.2 — Mobile Application Directory Structure"
+      style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=2;fontColor=#1A1A2E;"
+      vertex="1" parent="1">
+      <mxGeometry x="257" y="970" width="1140" height="36" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

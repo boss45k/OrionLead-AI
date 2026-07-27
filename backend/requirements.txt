@@ -1,0 +1,57 @@
+Flask==2.3.2
+python-dotenv==1.0.0
+SQLAlchemy==2.0.18
+Flask-SQLAlchemy==3.0.5
+pymysql==1.1.0
+cryptography==41.0.0
+PyJWT==2.8.0
+requests==2.31.0
+beautifulsoup4==4.12.2
+lxml==4.9.3
+ddgs>=6.0
+numpy==1.23.5
+scikit-learn==1.3.0
+NLTK==3.8.1
+pandas==2.0.3
+python-dateutil==2.8.2
+flask-cors==4.0.0
+flask-limiter==3.5.0
+celery[sqlalchemy]==5.3.1
+redis==4.5.5
+APScheduler==3.10.1
+boto3==1.28.0
+
+# Request/Response Validation
+marshmallow==3.20.1
+
+# Error Tracking & Monitoring
+sentry-sdk==1.39.1
+
+# API Documentation
+flasgger==0.9.7.1
+flask-restx==0.5.1
+
+# Logging
+python-json-logger==2.0.7
+
+# AI Services
+# OpenAI API is used via REST (requests) — no extra package needed
+# Uncomment these to enable OpenAI/Anthropic as additional providers
+openai==1.3.0
+# anthropic==0.7.0
+
+# ML model training (XGBoost + Optuna tuning + SHAP explanations)
+xgboost>=2.0.0
+optuna>=3.0.0
+shap>=0.43.0
+
+# NLP & ML Stack (optional — for advanced features)
+spacy==3.8.0
+faiss-cpu==1.7.4
+sentence-transformers==3.0.1
+
+# Email verification MX check (optional — DNS fallback when ZeroBounce not configured)
+dnspython>=2.4.0
+
+# Push notifications via Firebase Cloud Messaging
+firebase-admin>=6.2.0

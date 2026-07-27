@@ -1,0 +1,158 @@
+{
+  "dashboard": {
+    "title": "Lead Qualification & Agent Performance",
+    "description": "AI agent metrics, qualification rates, and performance",
+    "tags": ["agents", "qualifications", "performance"],
+    "timezone": "browser",
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Qualification Success Rate",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "rate(agent_qualifications_total{status='success'}[5m]) / rate(agent_qualifications_total[5m]) * 100"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "max": 100,
+            "min": 0
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Qualification Rate (per sec)",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "rate(agent_qualifications_total[5m])",
+            "legendFormat": "{{agent_name}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Average Qualification Time",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "avg(agent_qualification_duration_seconds)",
+            "legendFormat": "{{agent_name}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+        "fieldConfig": {
+          "defaults": {"unit": "s"}
+        }
+      },
+      {
+        "id": 4,
+        "title": "Total Leads in System",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "leads_total_in_system"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0}
+      },
+      {
+        "id": 5,
+        "title": "Qualification Duration Percentiles",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, agent_qualification_duration_seconds)",
+            "legendFormat": "P95"
+          },
+          {
+            "expr": "histogram_quantile(0.5, agent_qualification_duration_seconds)",
+            "legendFormat": "P50"
+          },
+          {
+            "expr": "histogram_quantile(0.99, agent_qualification_duration_seconds)",
+            "legendFormat": "P99"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+        "yaxes": [
+          {"format": "s", "label": "Duration (seconds)"}
+        ]
+      },
+      {
+        "id": 6,
+        "title": "LLM API Calls",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(agent_llm_calls_total[5m])",
+            "legendFormat": "{{service}} {{model}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8},
+        "yaxes": [
+          {"format": "reqps", "label": "Calls/sec"}
+        ]
+      },
+      {
+        "id": 7,
+        "title": "LLM Token Usage",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(agent_llm_tokens_total[5m])",
+            "legendFormat": "{{service}} {{model}} {{token_type}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16},
+        "yaxes": [
+          {"format": "short", "label": "Tokens/sec"}
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Qualification Score Distribution",
+        "type": "heatmap",
+        "targets": [
+          {
+            "expr": "rate(qualification_score_distribution[5m])"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16}
+      },
+      {
+        "id": 9,
+        "title": "Batch Qualification Status",
+        "type": "piechart",
+        "targets": [
+          {
+            "expr": "sum(rate(agent_batch_qualifications_total[5m])) by (status)"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 24}
+      },
+      {
+        "id": 10,
+        "title": "LLM API Failures",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(agent_llm_calls_total{status='failed'}[5m])",
+            "legendFormat": "{{service}} {{model}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 24},
+        "yaxes": [
+          {"format": "reqps", "label": "Failures/sec"}
+        ]
+      }
+    ]
+  },
+  "overwrite": false
+}

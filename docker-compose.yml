@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: orionlead_backend
+    environment:
+      FLASK_ENV: ${FLASK_ENV:-development}
+      DATABASE_URL: ${DATABASE_URL:-mysql+pymysql://root:password@host.docker.internal:3306/ai_lead_db}
+      SECRET_KEY: ${SECRET_KEY:-dev-secret-key-change-in-production}
+      API_PORT: 5000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "5000:5000"
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: orionlead_web
+    environment:
+      REACT_APP_API_URL: http://localhost:5000
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  mobile:
+    build:
+      context: ./mobile
+      dockerfile: Dockerfile
+    container_name: orionlead_mobile
+    environment:
+      API_URL: http://localhost:5000
+    volumes:
+      - ./mobile:/app
+      - /app/node_modules
+    ports:
+      - "8081:8081"
+    depends_on:
+      - backend
+
+networks:
+  default:
+    name: orionlead_network

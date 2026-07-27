@@ -1,0 +1,162 @@
+{
+  "client": {
+    "name": "Your Company Name",
+    "email": "client@company.com",
+    "industry": "Technology"
+  },
+  "data_requirements": {
+    "target_job_titles": [
+      "CEO",
+      "CTO",
+      "VP of Engineering",
+      "Engineering Manager",
+      "Tech Lead",
+      "Senior Developer",
+      "Director of Technology"
+    ],
+    "target_company_size": {
+      "min_employees": 50,
+      "max_employees": 5000,
+      "allow_freelancers": true
+    },
+    "target_industries": [
+      "Software Development",
+      "SaaS",
+      "Technology",
+      "Cloud",
+      "AI/ML",
+      "Fintech",
+      "Cybersecurity"
+    ],
+    "geographic_regions": [
+      "United States",
+      "Canada",
+      "UK",
+      "Western Europe"
+    ],
+    "experience_level": {
+      "min_years": 3,
+      "prefer_senior": true
+    }
+  },
+  "interest_filters": {
+    "must_have_interests": [
+      "Python",
+      "AI",
+      "Cloud Computing",
+      "Data Science",
+      "DevOps"
+    ],
+    "should_have_interests": [
+      "AWS",
+      "Azure",
+      "Kubernetes",
+      "Machine Learning",
+      "Open Source"
+    ],
+    "exclude_interests": [
+      "Legacy Systems",
+      "COBOL",
+      "Mainframe"
+    ]
+  },
+  "qualification_settings": {
+    "min_qualification_score": 50,
+    "hot_score_threshold": 70,
+    "warm_score_threshold": 40,
+    "cold_score_threshold": 0
+  },
+  "data_sources": {
+    "github": {
+      "enabled": true,
+      "searches": [
+        {
+          "location": "San Francisco",
+          "followers_min": 100,
+          "repos_min": 5
+        },
+        {
+          "location": "New York",
+          "followers_min": 50,
+          "repos_min": 3
+        },
+        {
+          "location": "London",
+          "followers_min": 50,
+          "repos_min": 3
+        }
+      ],
+      "limit": 50
+    },
+    "hunter": {
+      "enabled": false,
+      "api_key": "${HUNTER_API_KEY}",
+      "companies": [
+        "google.com",
+        "microsoft.com",
+        "amazon.com",
+        "apple.com"
+      ],
+      "limit": 100,
+      "email_type": "professional"
+    },
+    "apollo": {
+      "enabled": false,
+      "api_key": "${APOLLO_API_KEY}",
+      "filters": {
+        "job_titles": "CTO OR VP Engineering OR Tech Lead",
+        "company_size": "200-5000",
+        "technologies": "Python,AWS,Kubernetes"
+      },
+      "limit": 150
+    },
+    "rocketreach": {
+      "enabled": false,
+      "api_key": "${ROCKETREACH_API_KEY}",
+      "search_criteria": "tech founders",
+      "limit": 100
+    },
+    "crunchbase": {
+      "enabled": false,
+      "api_key": "${CRUNCHBASE_API_KEY}",
+      "person_types": ["founder", "executive"],
+      "funding_min_usd": 1000000,
+      "limit": 100
+    },
+    "web_scraper": {
+      "enabled": true,
+      "websites": [
+        "github.com",
+        "dev.to",
+        "hashnode.com",
+        "medium.com/@tech"
+      ],
+      "keywords": [
+        "python developer",
+        "cloud architect",
+        "ai engineer"
+      ]
+    }
+  },
+  "deduplication": {
+    "enabled": true,
+    "match_fields": ["email", "name", "company"],
+    "fuzzy_match": true
+  },
+  "enrichment": {
+    "clearbit": {
+      "enabled": false,
+      "api_key": "${CLEARBIT_API_KEY}"
+    },
+    "linkedin": {
+      "enabled": false,
+      "api_key": "${LINKEDIN_API_KEY}"
+    }
+  },
+  "output": {
+    "format": "database",
+    "export_csv": true,
+    "export_path": "./exports/leads_export.csv",
+    "duplicate_handling": "keep_highest_score"
+  }
+}

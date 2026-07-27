@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <mxCell id="2" value=""
+      style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D1117;strokeColor=#30363D;fontColor=#FFFFFF;align=center;verticalAlign=top;arcSize=3;"
+      vertex="1" parent="1">
+      <mxGeometry x="57" y="50" width="1540" height="900" as="geometry"/>
+    </mxCell>
+    <mxCell id="3" value="Figure 5.1 — Backend Project File Structure"
+      style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=16;fontStyle=1;fontColor=#FFFFFF;"
+      vertex="1" parent="1">
+      <mxGeometry x="77" y="62" width="1500" height="44" as="geometry"/>
+    </mxCell>
+    <mxCell id="4" value="&lt;b style=&quot;font-size:13px;color:#58A6FF;font-family:Arial,sans-serif;&quot;&gt;Root &amp; Configuration&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;font-family:&apos;Courier New&apos;,monospace;font-size:10.5px;color:#E6EDF3;line-height:1.55;&quot;&gt;backend/&lt;br/&gt;├── run.py&lt;br/&gt;│   Flask app factory&lt;br/&gt;│   SocketIO init&lt;br/&gt;│&lt;br/&gt;├── config.py&lt;br/&gt;│   Dev / prod / test&lt;br/&gt;│   config classes&lt;br/&gt;│&lt;br/&gt;├── requirements.txt&lt;br/&gt;│   Python deps&lt;br/&gt;│&lt;br/&gt;├── .env&lt;br/&gt;│   API keys, DB URI&lt;br/&gt;│   (not committed)&lt;br/&gt;│&lt;br/&gt;├── Dockerfile&lt;br/&gt;├── docker-compose.yml&lt;br/&gt;└── pytest.ini&lt;/span&gt;"
+      style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161B22;strokeColor=#30363D;fontColor=#E6EDF3;align=left;verticalAlign=top;arcSize=4;spacingLeft=10;spacingTop=10;"
+      vertex="1" parent="1">
+      <mxGeometry x="69" y="170" width="362" height="760" as="geometry"/>
+    </mxCell>
+    <mxCell id="5" value="&lt;b style=&quot;font-size:13px;color:#79C0FF;font-family:Arial,sans-serif;&quot;&gt;app/  Package Core&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;font-family:&apos;Courier New&apos;,monospace;font-size:10.5px;color:#E6EDF3;line-height:1.55;&quot;&gt;app/&lt;br/&gt;├── __init__.py&lt;br/&gt;│   create_app() factory&lt;br/&gt;│   Blueprint reg.&lt;br/&gt;│   SocketIO + CORS&lt;br/&gt;│&lt;br/&gt;├── models/&lt;br/&gt;│   └── models.py&lt;br/&gt;│       12 SQLAlchemy models:&lt;br/&gt;│       User · Lead&lt;br/&gt;│       LeadActivity · Outcome&lt;br/&gt;│       DataSource · SyncLog&lt;br/&gt;│       AIDecision · CompanyIntel&lt;br/&gt;│       QualityTraining&lt;br/&gt;│       Notification&lt;br/&gt;│       ProviderStats&lt;br/&gt;│&lt;br/&gt;└── schemas/&lt;br/&gt;    └── schemas.py&lt;br/&gt;        Marshmallow DTOs&lt;/span&gt;"
+      style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161B22;strokeColor=#30363D;fontColor=#E6EDF3;align=left;verticalAlign=top;arcSize=4;spacingLeft=10;spacingTop=10;"
+      vertex="1" parent="1">
+      <mxGeometry x="445" y="170" width="362" height="760" as="geometry"/>
+    </mxCell>
+    <mxCell id="6" value="&lt;b style=&quot;font-size:13px;color:#FFA657;font-family:Arial,sans-serif;&quot;&gt;API Routes (Blueprints)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;font-family:&apos;Courier New&apos;,monospace;font-size:10.5px;color:#E6EDF3;line-height:1.55;&quot;&gt;app/routes/&lt;br/&gt;├── auth.py&lt;br/&gt;│   /register · /login&lt;br/&gt;│   /google · /verify-otp&lt;br/&gt;│   /refresh · /logout&lt;br/&gt;│&lt;br/&gt;├── leads.py&lt;br/&gt;│   CRUD /leads/&lt;br/&gt;│   /collect · /export&lt;br/&gt;│   ownership enforcer&lt;br/&gt;│&lt;br/&gt;├── ai.py&lt;br/&gt;│   /score · /train-ml&lt;br/&gt;│   /enrich · /feedback&lt;br/&gt;│   /cascade-stats&lt;br/&gt;│&lt;br/&gt;├── analytics.py&lt;br/&gt;│   /dashboard · /sources&lt;br/&gt;│   /trends · /quality&lt;br/&gt;│&lt;br/&gt;└── sync.py&lt;br/&gt;    /push (mobile sync)&lt;br/&gt;    /status · /retry&lt;/span&gt;"
+      style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161B22;strokeColor=#30363D;fontColor=#E6EDF3;align=left;verticalAlign=top;arcSize=4;spacingLeft=10;spacingTop=10;"
+      vertex="1" parent="1">
+      <mxGeometry x="821" y="170" width="362" height="760" as="geometry"/>
+    </mxCell>
+    <mxCell id="7" value="&lt;b style=&quot;font-size:13px;color:#7EE787;font-family:Arial,sans-serif;&quot;&gt;Services &amp; Data Layer&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;font-family:&apos;Courier New&apos;,monospace;font-size:10.5px;color:#E6EDF3;line-height:1.55;&quot;&gt;app/services/&lt;br/&gt;├── gemini_service.py&lt;br/&gt;│   Gemini 1.5 Flash scorer&lt;br/&gt;│   Prompt build + parse&lt;br/&gt;│&lt;br/&gt;├── sync_service.py&lt;br/&gt;│   MySQL + Supabase&lt;br/&gt;│   Retry with backoff&lt;br/&gt;│&lt;br/&gt;└── demo_data.py&lt;br/&gt;    Seed data generator&lt;br/&gt;&lt;br/&gt;data/&lt;br/&gt;├── training_dataset.jsonl&lt;br/&gt;│   71 ML training samples&lt;br/&gt;├── quality_log.jsonl&lt;br/&gt;│   AI decision audit&lt;br/&gt;├── feedback_accuracy.json&lt;br/&gt;├── lead_quality_memory.json&lt;br/&gt;└── provider_stats.json&lt;/span&gt;"
+      style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161B22;strokeColor=#30363D;fontColor=#E6EDF3;align=left;verticalAlign=top;arcSize=4;spacingLeft=10;spacingTop=10;"
+      vertex="1" parent="1">
+      <mxGeometry x="1197" y="170" width="362" height="760" as="geometry"/>
+    </mxCell>
+    <mxCell id="8" value="Figure 5.1 — Backend Directory Structure"
+      style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=2;fontColor=#1A1A2E;"
+      vertex="1" parent="1">
+      <mxGeometry x="257" y="970" width="1140" height="36" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

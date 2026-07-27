@@ -1,0 +1,166 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="XCQ6Pr73Ejxfui8iHFSs" name="Page-1">
+    <mxGraphModel dx="1911" dy="1033" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=1;" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;Figure 3.1 — Level-0 Context Data Flow Diagram&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="1000" x="327" y="22" as="geometry" />
+        </mxCell>
+        <mxCell id="g_actors" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#555555;dashed=1;dashPattern=8 4;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontSize=11;fontStyle=3;pointerEvents=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Human Actors&lt;/font&gt;" vertex="1">
+          <mxGeometry height="590" width="215" x="18" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="a_sales" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;Sales User&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="165" x="35" y="148" as="geometry" />
+        </mxCell>
+        <mxCell id="a_manager" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;Manager&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="165" x="35" y="342" as="geometry" />
+        </mxCell>
+        <mxCell id="a_admin" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Administrator&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="165" x="35" y="544" as="geometry" />
+        </mxCell>
+        <mxCell id="sys" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fffae6;strokeColor=#d6b656;strokeWidth=2;fontSize=13;verticalAlign=middle;" value="&lt;font style=&quot;font-size: 25px;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;1.0&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;b style=&quot;&quot;&gt;OrionLead AI System&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;color: rgb(85, 85, 85);&quot;&gt;AI-Powered Lead Collection &amp;amp; Management&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="430" width="368" x="418" y="188" as="geometry" />
+        </mxCell>
+        <mxCell id="g_sources" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#555555;dashed=1;dashPattern=8 4;align=right;verticalAlign=top;spacingTop=6;spacingRight=8;fontSize=11;fontStyle=3;pointerEvents=0;" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;External Data Sources&lt;/font&gt;" vertex="1">
+          <mxGeometry height="590" width="215" x="1000" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="s_hunter" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#555555;fontColor=#333333;fontSize=12;fontStyle=1;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;Hunter.io&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="175" x="1015" y="143" as="geometry" />
+        </mxCell>
+        <mxCell id="s_apollo" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#555555;fontColor=#333333;fontSize=12;fontStyle=1;" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;Apollo.io&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="175" x="1015" y="228" as="geometry" />
+        </mxCell>
+        <mxCell id="s_pdl" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#555555;fontColor=#333333;fontSize=12;fontStyle=1;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;People Data Labs&lt;/font&gt;" vertex="1">
+          <mxGeometry height="63" width="175" x="1015" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="s_serper" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#555555;fontColor=#333333;fontSize=12;fontStyle=1;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;Serper.dev&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="175" x="1015" y="398" as="geometry" />
+        </mxCell>
+        <mxCell id="s_gplaces" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#555555;fontColor=#333333;fontSize=12;fontStyle=1;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;Google Places&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="175" x="1015" y="483" as="geometry" />
+        </mxCell>
+        <mxCell id="s_zb" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#555555;fontColor=#333333;fontSize=12;fontStyle=1;" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;ZeroBounce&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="175" x="1015" y="568" as="geometry" />
+        </mxCell>
+        <mxCell id="g_ai" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#555555;dashed=1;dashPattern=8 4;align=center;verticalAlign=top;spacingTop=6;fontSize=11;fontStyle=3;pointerEvents=0;" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;AI &amp;amp; External Services&lt;/font&gt;" vertex="1">
+          <mxGeometry height="133" width="920" x="148" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="ai_gemini" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;Google Gemini&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="175" x="170" y="793" as="geometry" />
+        </mxCell>
+        <mxCell id="ai_groq" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;Groq LLM&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="155" x="400" y="793" as="geometry" />
+        </mxCell>
+        <mxCell id="ai_fcm" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;Firebase FCM&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="175" x="615" y="793" as="geometry" />
+        </mxCell>
+        <mxCell id="ai_supa" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;Supabase&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="175" x="855" y="793" as="geometry" />
+        </mxCell>
+        <mxCell id="e_s1_req" edge="1" parent="1" source="a_sales" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.1;entryDx=0;entryDy=0;fontSize=10;align=center;endArrow=block;endFill=1;" target="sys" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Credentials / lead queries&lt;/font&gt;">
+          <mxGeometry relative="1" x="0.6215" y="28" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_s1_res" edge="1" parent="1" source="sys" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.2;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;fontSize=10;align=center;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;" target="a_sales" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Leads / reports / notifications&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.2302" y="-2" as="geometry">
+            <mxPoint x="1" as="offset" />
+            <Array as="points">
+              <mxPoint x="270" y="292" />
+              <mxPoint x="270" y="187" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_req" edge="1" parent="1" source="a_manager" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.42;entryDx=0;entryDy=0;fontSize=10;align=center;endArrow=block;endFill=1;" target="sys" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Team leads / analytics&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m_res" edge="1" parent="1" source="sys" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.52;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;fontSize=10;align=center;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;" target="a_manager" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;System reports&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="418" y="430" />
+              <mxPoint x="309" y="430" />
+              <mxPoint x="309" y="381" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_a_cmd" edge="1" parent="1" source="a_admin" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.76;entryDx=0;entryDy=0;fontSize=10;align=center;endArrow=block;endFill=1;" target="sys" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Admin commands&lt;/font&gt;">
+          <mxGeometry relative="1" x="0.334" y="23" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="290" y="561" />
+              <mxPoint x="290" y="503" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_hunter" edge="1" parent="1" source="s_hunter" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.1;entryDx=0;entryDy=0;fontSize=10;align=center;endArrow=block;endFill=1;" target="sys" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Email data&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_apollo" edge="1" parent="1" source="s_apollo" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.26;entryDx=0;entryDy=0;fontSize=10;align=center;endArrow=block;endFill=1;" target="sys" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;B2B profiles&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pdl" edge="1" parent="1" source="s_pdl" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.42;entryDx=0;entryDy=0;fontSize=10;align=center;endArrow=block;endFill=1;" target="sys" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Enrichment data&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_serper" edge="1" parent="1" source="s_serper" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.58;entryDx=0;entryDy=0;fontSize=10;align=center;endArrow=block;endFill=1;" target="sys" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Search results&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gplaces" edge="1" parent="1" source="s_gplaces" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.74;entryDx=0;entryDy=0;fontSize=10;align=center;endArrow=block;endFill=1;" target="sys" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Business info&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_zb" edge="1" parent="1" source="s_zb" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.9;entryDx=0;entryDy=0;fontSize=10;align=center;endArrow=block;endFill=1;" target="sys" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Email status&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gemini" edge="1" parent="1" source="sys" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.22;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;align=center;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;" target="ai_gemini" value="">
+          <mxGeometry relative="1" x="-0.074" y="10" as="geometry">
+            <mxPoint x="-1" as="offset" />
+            <Array as="points">
+              <mxPoint x="512" y="660" />
+              <mxPoint x="257" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B6n1kojidLkteAD83kiA-2" connectable="0" parent="e_gemini" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Scoring Requests&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.0762" y="-4" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_groq" edge="1" parent="1" source="sys" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.42;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;align=center;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;" target="ai_groq" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Fallback requests&lt;/font&gt;">
+          <mxGeometry relative="1" x="0.1946" y="-15" as="geometry">
+            <mxPoint x="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_fcm" edge="1" parent="1" source="sys" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.62;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;align=center;endArrow=block;endFill=1;" target="ai_fcm" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Push payloads&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_supa" edge="1" parent="1" source="sys" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.84;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;align=center;startArrow=block;startFill=1;endArrow=block;endFill=1;" target="ai_supa" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Sync events&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_box" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f9f9f9;strokeColor=#cccccc;fontSize=10;" value="" vertex="1">
+          <mxGeometry height="65" width="260" x="20" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontStyle=1;" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;Legend&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="60" x="28" y="924" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_solid_arrow" edge="1" parent="1" style="edgeStyle=none;html=1;endArrow=block;endFill=1;startSize=10;endSize=10;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="28" y="952" as="sourcePoint" />
+            <mxPoint x="108" y="952" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_solid_text" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Request / data in&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="150" x="116" y="942" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_dash_arrow" edge="1" parent="1" style="edgeStyle=none;html=1;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;startSize=10;endSize=10;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="28" y="972" as="sourcePoint" />
+            <mxPoint x="108" y="972" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_dash_text" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Response / data out&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="150" x="116" y="962" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,98 @@
+{
+  "dashboard": {
+    "title": "Request Performance Metrics",
+    "description": "HTTP request latency, throughput, and error rates",
+    "tags": ["http", "performance", "requests"],
+    "timezone": "browser",
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Request Rate (requests/sec)",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(http_requests_total[5m])",
+            "legendFormat": "{{method}} {{endpoint}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+        "yaxes": [
+          {"format": "reqps", "label": "Requests/sec"}
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Request Latency (P95)",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, http_request_duration_seconds)",
+            "legendFormat": "P95 {{endpoint}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+        "yaxes": [
+          {"format": "s", "label": "Latency (seconds)"}
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Error Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(errors_total[5m])",
+            "legendFormat": "{{error_type}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+        "yaxes": [
+          {"format": "errps", "label": "Errors/sec"}
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Response Size (bytes)",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(http_response_size_bytes_sum[5m]) / rate(http_response_size_bytes_count[5m])",
+            "legendFormat": "Avg {{endpoint}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8},
+        "yaxes": [
+          {"format": "bytes", "label": "Size (bytes)"}
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Status Code Distribution (5m)",
+        "type": "piechart",
+        "targets": [
+          {
+            "expr": "sum(rate(http_requests_total[5m])) by (status_code)"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}
+      },
+      {
+        "id": 6,
+        "title": "Request Payload Size",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(http_request_size_bytes_sum[5m]) / rate(http_request_size_bytes_count[5m])",
+            "legendFormat": "Avg {{method}} {{endpoint}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16},
+        "yaxes": [
+          {"format": "bytes", "label": "Size (bytes)"}
+        ]
+      }
+    ]
+  },
+  "overwrite": false
+}

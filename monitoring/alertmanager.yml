@@ -1,0 +1,109 @@
+# AlertManager Configuration for OrionLead AI
+# Configure notification channels (email, Slack, PagerDuty, etc.)
+
+global:
+  resolve_timeout: 5m
+  slack_api_url: ''  # Set your Slack webhook URL here
+  pagerduty_url: 'https://events.pagerduty.com/v2/enqueue'
+
+# The root route with all its children gets defined below
+route:
+  # Default receiver
+  receiver: "default"
+
+  # How long to initially wait to send a notification for a group of alerts
+  group_wait: 10s
+
+  # How long to wait before sending a notification about new alerts added to a group
+  group_interval: 10s
+
+  # How long an alert group can exist without receiving new alerts before the group is resolved
+  repeat_interval: 1h
+
+  # Sub-routes (can nest to multiple levels)
+  routes:
+    # Critical severity alerts - page on-call engineer
+    - match:
+        severity: critical
+      receiver: "pagerduty"
+      repeat_interval: 5m
+      group_wait: 30s
+
+    # Warning severity - send to Slack
+    - match:
+        severity: warning
+      receiver: "slack-warnings"
+      repeat_interval: 1h
+
+    # Database alerts - send to database team
+    - match_re:
+        alertname: "Database.*"
+      receiver: "database-team"
+      group_wait: 30s
+
+    # LLM alerts - send to AI team
+    - match_re:
+        alertname: ".*LLM.*"
+      receiver: "ai-team"
+      group_wait: 30s
+
+# Inhibition rules prevent alerts from being triggered if certain other alerts are already firing
+inhibit_rules:
+  # Inhibit warning alerts if critical alert is firing
+  - source_match:
+      severity: "critical"
+    target_match:
+      severity: "warning"
+    equal: ["alertname", "dev", "instance"]
+
+  # Don't alert on test alerts
+  - source_match:
+      alertname: "TestAlert"
+    equal: ["alertname"]
+
+# Receivers define the notifications to send
+receivers:
+  # Default receiver (no notifications configured)
+  - name: "default"
+
+  # Page on-call engineer via PagerDuty
+  - name: "pagerduty"
+    pagerduty_configs:
+      - service_key: "YOUR_PAGERDUTY_SERVICE_KEY"
+        description: "Alert from Prometheus"
+
+  # Send warnings to Slack
+  - name: "slack-warnings"
+    slack_configs:
+      - api_url: "YOUR_SLACK_WEBHOOK_URL"
+        channel: "#alerts-warnings"
+        title: "{{ .GroupLabels.alertname }}"
+        text: "{{ range .Alerts }}{{ .Annotations.description }}{{ end }}"
+        send_resolved: true
+
+  # Send to database team
+  - name: "database-team"
+    slack_configs:
+      - api_url: "YOUR_SLACK_WEBHOOK_URL"
+        channel: "#database-alerts"
+        title: "Database Alert: {{ .GroupLabels.alertname }}"
+        text: "{{ range .Alerts }}{{ .Annotations.description }}{{ end }}"
+
+  # Send to AI team
+  - name: "ai-team"
+    slack_configs:
+      - api_url: "YOUR_SLACK_WEBHOOK_URL"
+        channel: "#ai-alerts"
+        title: "AI Service Alert: {{ .GroupLabels.alertname }}"
+        text: "{{ range .Alerts }}{{ .Annotations.description }}{{ end }}"
+
+  # Email notifications (requires SMTP configuration)
+  # - name: "email-ops"
+  #   email_configs:
+  #     - to: "ops@company.com"
+  #       from: "alertmanager@company.com"
+  #       smarthost: "smtp.company.com:587"
+  #       auth_username: "alertmanager@company.com"
+  #       auth_password: "password"
+  #       headers:
+  #         Subject: "Alert: {{ .GroupLabels.alertname }}"

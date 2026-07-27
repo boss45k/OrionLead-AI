@@ -1,0 +1,87 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="57wHvknuoIG531lZjgNd" name="Page-1">
+    <mxGraphModel dx="1911" dy="1033" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=22;fontStyle=1;fontColor=#1A1A2E;" value="Figure 4.4  —  Company-First Intelligence Pipeline" vertex="1">
+          <mxGeometry height="38" width="1540" x="57" y="14" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontColor=#0D47A1;align=center;verticalAlign=top;arcSize=8;" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Collection Query&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;‘Find SaaS CTOs in Dubai’&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="360" x="647" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="swimlane;startSize=40;fillColor=#F8F9FA;strokeColor=#37474F;fontColor=#1A1A2E;fontStyle=1;fontSize=22;align=center;rounded=1;arcSize=4;swimlaneLine=1;" value="M1 — Intelligence Orchestrator (Coordinator)" vertex="1">
+          <mxGeometry height="840" width="1540" x="50" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#C62828;fontColor=#B71C1C;align=center;verticalAlign=top;arcSize=8;" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;M2 — Anti-Junk Domain Filter&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Screens company domain before any API calls&lt;br&gt;Rejects: free email domains, placeholder companies&lt;br&gt;Rejects: known test/spam domains, no-website companies&lt;br&gt;Output: domain_valid = true / false&lt;/font&gt;" vertex="1">
+          <mxGeometry height="235" width="440" x="20" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontColor=#BF360C;align=center;verticalAlign=top;arcSize=8;" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;M3 — Website Auditor&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Fetches company homepage via Serper.dev or Google Places&lt;br&gt;Extracts: title, meta description, tech stack signals&lt;br&gt;Scores: professionalism, website age, HTTPS, content depth&lt;br&gt;Output: website_score (0–100) + tech_signals&lt;/font&gt;" vertex="1">
+          <mxGeometry height="235" width="480" x="530" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDE7;strokeColor=#F9A825;fontColor=#E65C00;align=center;verticalAlign=top;arcSize=8;" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;M4 — Business Classifier&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Classifies company into ICP (Ideal Customer Profile) buckets&lt;br&gt;Categories: SaaS, E-commerce, Agency, Enterprise, SMB, Startup&lt;br&gt;Uses Gemini to interpret website content + signals&lt;br&gt;Output: industry, company_type, icp_match_score&lt;/font&gt;" vertex="1">
+          <mxGeometry height="235" width="440" x="1080" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B71C1C;strokeColor=#7F0000;fontColor=#FFFFFF;align=center;verticalAlign=middle;arcSize=20;fontStyle=1;fontSize=12;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;Company REJECTED (score &amp;lt; 65 or domain invalid)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="170" width="190" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="bzOS7Ap13feLCkzynXlh-19" edge="1" parent="4" source="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bzOS7Ap13feLCkzynXlh-26" edge="1" parent="4" source="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9" parent="4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontColor=#1B5E20;align=center;verticalAlign=top;arcSize=8;" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 21px;&quot;&gt;M5 — Growth Detector &amp;amp; Account Scorer&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 21px;&quot;&gt;Growth signals: recent funding, job postings, product launches&lt;br&gt;Hiring trend analysis via Serper.dev news search&lt;br&gt;Account score = website_score × 0.3 + icp_match × 0.4 + growth × 0.3&lt;br&gt;Threshold: account_score ≥ 65 → proceed to contact resolution&lt;br&gt;Output: account_score + growth_signals[] + proceed flag&lt;/font&gt;" vertex="1">
+          <mxGeometry height="255" width="580" x="260" y="345" as="geometry" />
+        </mxCell>
+        <mxCell id="bzOS7Ap13feLCkzynXlh-20" edge="1" parent="4" source="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#6A1B9A;fontColor=#4A148C;align=center;verticalAlign=top;arcSize=8;" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;M6 — Contact Resolver&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Only runs AFTER company passes M5 threshold gate&lt;br&gt;Queries: Hunter.io (email), Apollo.io (profile), People Data Labs&lt;br&gt;Resolves: decision-maker name · verified email · title · LinkedIn&lt;br&gt;Validates email via ZeroBounce before saving&lt;br&gt;Output: verified contact record → AI Cascade (Fig 4.2)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="255" width="600" x="910" y="345" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#1B5E20;fontColor=#1B5E20;align=center;verticalAlign=top;arcSize=8;" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Qualified Contact Record&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;company · name · email · title · account_score · icp_match · growth_signals&lt;/font&gt;" vertex="1">
+          <mxGeometry height="112" width="580" x="460" y="678" as="geometry" />
+        </mxCell>
+        <mxCell id="13" edge="1" parent="4" source="5" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#455A64;strokeWidth=2.5;fillColor=#455A64;" target="6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="14" edge="1" parent="4" source="6" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#455A64;strokeWidth=2.5;fillColor=#455A64;" target="7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="15" edge="1" parent="4" source="5" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;exitX=0.05;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#C62828;strokeWidth=2.5;fillColor=#C62828;" target="8" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;FAIL&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="16" edge="1" parent="4" source="7" style="curved=1;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#F9A825;strokeWidth=2.5;fillColor=#F9A825;" target="9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="17" edge="1" parent="4" source="9" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#C62828;strokeWidth=2.5;fillColor=#C62828;" target="8" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;FAIL  (score &amp;lt; 65)&lt;/font&gt;">
+          <mxGeometry relative="1" x="0.2722" y="75" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bzOS7Ap13feLCkzynXlh-21" connectable="0" parent="17" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Text" vertex="1">
+          <mxGeometry relative="1" x="-0.6109" y="-9" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" edge="1" parent="4" source="9" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#2E7D32;strokeWidth=2.5;fillColor=#2E7D32;" target="10" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Gate passed (score ≥ 65)&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.0571" y="-39" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" edge="1" parent="4" source="10" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#6A1B9A;strokeWidth=2.5;fillColor=#6A1B9A;" target="11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="12" edge="1" parent="1" source="3" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#1565C0;strokeWidth=2.5;fillColor=#1565C0;" target="5" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="827" y="150" />
+              <mxPoint x="290" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

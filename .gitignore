@@ -1,0 +1,85 @@
+## ── Dependencies ────────────────────────────────────────────────────────────
+node_modules/
+
+## ── Environment / secrets (NEVER commit real credentials) ──────────────────
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test.local
+.env.production
+.env.production.local
+.env.staging
+# Keep .env.example tracked — it has placeholder values only
+
+## ── Build output ────────────────────────────────────────────────────────────
+dist/
+build/
+.expo/
+.expo-shared/
+
+## ── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.so
+*.pyo
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+pyrightconfig.json
+
+## ── ML model artefacts ──────────────────────────────────────────────────────
+models/*.pkl
+models/*.joblib
+models/*.bin
+*.pkl
+*.joblib
+
+## ── Logs & temp files ───────────────────────────────────────────────────────
+logs/
+*.log
+*.log.*
+*.tmp
+*.temp
+backend_init.log
+
+## ── OS / editor ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+## ── Report / Office temp files ───────────────────────────────────────────────
+report/~$*
+*.docx.bak
+
+## ── Firebase service account (contains private key) ─────────────────────────
+*service_account*.json
+firebase-adminsdk*.json
+*-firebase-adminsdk-*.json
+
+## ── Database dumps ───────────────────────────────────────────────────────────
+*.sql.gz
+*.dump
+
+## ── Large binaries — exceed GitHub limits / bloat repo ──────────────────────
+# Android APK (110MB, over GitHub's 100MB hard limit — ship via Releases)
+*.apk
+mobile-app-apk/
+# Word report drafts (~20MB each — keep source .py, not built .docx)
+report/*.docx
+report/~$*.docx
+# Large synthetic/demo dataset (9.5MB — regenerate via backend/app/services/data_generator.py)
+backend/data/synthetic_leads.json
+
+## ── Git internals (never needed in .gitignore but explicit) ─────────────────
+.git/

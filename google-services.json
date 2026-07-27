@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "450624514635",
+    "project_id": "orionlead",
+    "storage_bucket": "orionlead.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450624514635:android:9a2eda493cfb338a697bce",
+        "android_client_info": {
+          "package_name": "com.orionlead.ai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450624514635-jslsgt2gnjnvgugc5fo84sauq46me4d1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5-2iJtD1rHFd7jdkD4WqIc7Af_B5crE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450624514635-jslsgt2gnjnvgugc5fo84sauq46me4d1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

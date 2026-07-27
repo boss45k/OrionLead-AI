@@ -1,0 +1,125 @@
+
+[REFRESH_LEADS] Called at 2026-03-31 11:56:38.810236
+[REFRESH_LEADS] Calling initialize_advanced_ai()
+[REFRESH_LEADS] initialization complete
+[REFRESH_LEADS] Lead 0: John Smith -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 1: Sarah Johnson -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 2: Mike Chen -> score=38, provider=Professional Stack
+
+[REFRESH_LEADS] Called at 2026-03-31 11:58:22.317291
+[REFRESH_LEADS] Calling initialize_advanced_ai()
+[REFRESH_LEADS] initialization complete
+[REFRESH_LEADS] Lead 3: Emily Rodriguez -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 0: John Smith -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 4: David Park -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 1: Sarah Johnson -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 5: Lisa Wong -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 2: Mike Chen -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 6: Robert Taylor -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 3: Emily Rodriguez -> score=32, provider=Professional Stack
+
+[REFRESH_LEADS] Called at 2026-03-31 12:01:17.294949
+[REFRESH_LEADS] Calling initialize_advanced_ai()
+[REFRESH_LEADS] initialization complete
+[REFRESH_LEADS] Lead 7: Jennifer Martinez -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 4: David Park -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 0: John Smith -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 8: Brian Lee -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 5: Lisa Wong -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 1: Sarah Johnson -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 9: Patricia Anderson -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 6: Robert Taylor -> score=50, provider=Professional Stack
+[REFRESH_LEADS] Lead 2: Mike Chen -> score=32, provider=Professional Stack
+
+[REFRESH_LEADS] Called at 2026-03-31 12:07:08.880700
+[REFRESH_LEADS] Calling initialize_advanced_ai()
+[REFRESH_LEADS] initialization complete
+[REFRESH_LEADS] Lead 0: John Smith -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 1: Sarah Johnson -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 2: Mike Chen -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 3: Emily Rodriguez -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 4: David Park -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 5: Lisa Wong -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 6: Robert Taylor -> score=50, provider=Professional Stack
+[REFRESH_LEADS] Lead 7: Jennifer Martinez -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 8: Brian Lee -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 9: Patricia Anderson -> score=38, provider=Professional Stack
+
+[REFRESH_LEADS] Called at 2026-03-31 12:13:09.551288
+[REFRESH_LEADS] Calling initialize_advanced_ai()
+[REFRESH_LEADS] initialization complete
+[REFRESH_LEADS] Lead 0: John Smith -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 1: Sarah Johnson -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 2: Mike Chen -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 3: Emily Rodriguez -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 4: David Park -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 5: Lisa Wong -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 6: Robert Taylor -> score=50, provider=Professional Stack
+[REFRESH_LEADS] Lead 7: Jennifer Martinez -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 8: Brian Lee -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 9: Patricia Anderson -> score=38, provider=Professional Stack
+
+[REFRESH_LEADS] Called at 2026-03-31 12:23:10.741375
+[REFRESH_LEADS] Calling initialize_advanced_ai()
+[REFRESH_LEADS] initialization complete
+[REFRESH_LEADS] Lead 0: John Smith -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 1: Sarah Johnson -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 2: Mike Chen -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 3: Emily Rodriguez -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 4: David Park -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 5: Lisa Wong -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 6: Robert Taylor -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 7: Jennifer Martinez -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 8: Brian Lee -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 9: Patricia Anderson -> score=32, provider=Professional Stack
+
+[REFRESH_LEADS] Called at 2026-03-31 12:29:55.234265
+[REFRESH_LEADS] Calling initialize_advanced_ai()
+[REFRESH_LEADS] initialization complete
+[REFRESH_LEADS] Lead 0: John Smith -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 1: Sarah Johnson -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 2: Mike Chen -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 3: Emily Rodriguez -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 4: David Park -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 5: Lisa Wong -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 6: Robert Taylor -> score=35, provider=Professional Stack
+[REFRESH_LEADS] Lead 7: Jennifer Martinez -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 8: Brian Lee -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 9: Patricia Anderson -> score=32, provider=Professional Stack
+
+[REFRESH_LEADS] Called at 2026-03-31 12:33:48.223997
+[REFRESH_LEADS] Calling initialize_advanced_ai()
+[REFRESH_LEADS] initialization complete
+[REFRESH_LEADS] Lead 0: John Smith -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 1: Sarah Johnson -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 2: Mike Chen -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 3: Emily Rodriguez -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 4: David Park -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 5: Lisa Wong -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 6: Robert Taylor -> score=38, provider=Professional Stack
+[REFRESH_LEADS] Lead 7: Jennifer Martinez -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 8: Brian Lee -> score=32, provider=Professional Stack
+[REFRESH_LEADS] Lead 9: Patricia Anderson -> score=35, provider=Professional Stack
+
+[REFRESH_LEADS] Called at 2026-03-31 12:44:34.609065
+[REFRESH_LEADS] Calling initialize_advanced_ai()
+[REFRESH_LEADS] initialization complete
+
+[REFRESH_LEADS] Called at 2026-03-31 12:44:55.121203
+[REFRESH_LEADS] Calling initialize_advanced_ai()
+[REFRESH_LEADS] initialization complete
+[REFRESH_LEADS] Lead 0: John Smith -> score=62, provider=Professional Stack
+[REFRESH_LEADS] Lead 0: John Smith -> score=62, provider=Professional Stack
+[REFRESH_LEADS] Lead 1: Sarah Johnson -> score=65, provider=Professional Stack
+[REFRESH_LEADS] Lead 1: Sarah Johnson -> score=65, provider=Professional Stack
+[REFRESH_LEADS] Lead 2: Mike Chen -> score=65, provider=Professional Stack
+[REFRESH_LEADS] Lead 2: Mike Chen -> score=65, provider=Professional Stack
+[REFRESH_LEADS] Lead 3: Emily Rodriguez -> score=65, provider=Professional Stack
+[REFRESH_LEADS] Lead 3: Emily Rodriguez -> score=56, provider=Professional Stack
+
+[REFRESH_LEADS] Called at 2026-03-31 12:47:28.850781
+[REFRESH_LEADS] Calling initialize_advanced_ai()
+[REFRESH_LEADS] initialization complete
+[REFRESH_LEADS] Lead 4: David Park -> score=65, provider=Professional Stack
+[REFRESH_LEADS] Lead 4: David Park -> score=65, provider=Professional Stack
+[REFRESH_LEADS] Lead 0: John Smith -> score=65, provider=Professional Stack

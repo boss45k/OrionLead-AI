@@ -1,0 +1,28 @@
+/* Settings Page Responsive Styles */
+
+.settings-container {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .settings-container {
+    padding: 12px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-container {
+    padding: 8px !important;
+  }
+
+  .settings-card .ant-tabs {
+    font-size: 12px;
+  }
+
+  .settings-card .ant-form-item-label {
+    padding-bottom: 4px;
+  }
+}

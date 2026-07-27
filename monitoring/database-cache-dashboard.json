@@ -1,0 +1,192 @@
+{
+  "dashboard": {
+    "title": "Database & Cache Metrics",
+    "description": "Database performance, connections, and cache efficiency",
+    "tags": ["database", "cache", "performance"],
+    "timezone": "browser",
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Active Database Connections",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "db_connections_active"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Pooled Connections",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "db_connections_pooled"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Connection Pool Usage %",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "(db_connections_active / (db_connections_active + db_connections_pooled)) * 100"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "max": 100,
+            "min": 0
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Database Errors",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "rate(db_errors_total[5m])",
+            "legendFormat": "{{error_type}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0}
+      },
+      {
+        "id": 5,
+        "title": "Query Latency Percentiles",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, db_query_duration_seconds)",
+            "legendFormat": "P95 {{query_type}}"
+          },
+          {
+            "expr": "histogram_quantile(0.5, db_query_duration_seconds)",
+            "legendFormat": "P50 {{query_type}}"
+          },
+          {
+            "expr": "histogram_quantile(0.99, db_query_duration_seconds)",
+            "legendFormat": "P99 {{query_type}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+        "yaxes": [
+          {"format": "s", "label": "Latency (seconds)"}
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Query Rate by Type",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(db_query_duration_seconds_count[5m])",
+            "legendFormat": "{{query_type}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8},
+        "yaxes": [
+          {"format": "qps", "label": "Queries/sec"}
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Cache Hit Rate",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "(cache_hits_total / (cache_hits_total + cache_misses_total)) * 100"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 16},
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "max": 100,
+            "min": 0
+          }
+        }
+      },
+      {
+        "id": 8,
+        "title": "Cache Operations Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(cache_hits_total[5m])",
+            "legendFormat": "Hits {{key_type}}"
+          },
+          {
+            "expr": "rate(cache_misses_total[5m])",
+            "legendFormat": "Misses {{key_type}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 16},
+        "yaxes": [
+          {"format": "ops", "label": "Operations/sec"}
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Cache Evictions",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "rate(cache_evictions_total[5m])",
+            "legendFormat": "{{key_type}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 16}
+      },
+      {
+        "id": 10,
+        "title": "Cache Operation Latency",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, cache_operations_duration_seconds)",
+            "legendFormat": "P95 {{operation}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 16},
+        "yaxes": [
+          {"format": "s", "label": "Latency (seconds)"}
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Connection Pool Status",
+        "type": "piechart",
+        "targets": [
+          {
+            "expr": "[db_connections_active, (db_connections_pooled)]"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 24}
+      },
+      {
+        "id": 12,
+        "title": "Query Duration by Type",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "avg(db_query_duration_seconds) by (query_type)",
+            "legendFormat": "{{query_type}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 24},
+        "yaxes": [
+          {"format": "s", "label": "Avg Duration (seconds)"}
+        ]
+      }
+    ]
+  },
+  "overwrite": false
+}

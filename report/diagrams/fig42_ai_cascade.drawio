@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="RCiRONAw5wvsLaato27o" name="Page-1">
+    <mxGraphModel dx="1564" dy="845" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=20;fontStyle=1;fontColor=#1A1A2E;" value="Figure 4.2 — Four-Layer AI Qualification Cascade" vertex="1">
+          <mxGeometry height="38" width="1100" x="180" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FD;strokeColor=#1565C0;fontColor=#1A1A2E;align=center;verticalAlign=top;arcSize=5;strokeWidth=2;" value="&lt;b style=&quot;color: rgb(13, 71, 161);&quot;&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Raw Lead Candidate&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;name · email · phone · company · domain · title&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="558" x="425.5" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C62828;strokeColor=#C62828;fontColor=#FFFFFF;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=0;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;LAYER 1&lt;/font&gt;" vertex="1">
+          <mxGeometry height="190" width="62" x="50" y="158" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#C62828;fontColor=#1A1A2E;align=center;verticalAlign=top;arcSize=5;strokeWidth=2;" value="&lt;b style=&quot;color: rgb(183, 28, 28);&quot;&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Anti-Junk Rule Engine&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;12 Deterministic Hard-Reject Rules (cheapest-first, zero API cost):&lt;br&gt;no email · role-based email (info@, support@) · free-mail domain · suspicious TLD&lt;br&gt;placeholder name (Test, N/A) · too-short name · no company · blacklisted domain&lt;br&gt;phone-only with no email · obviously-generated email · all-numeric name · empty title&lt;/font&gt;" vertex="1">
+          <mxGeometry height="190" width="1165" x="122" y="158" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B71C1C;strokeColor=#B71C1C;fontColor=#FFFFFF;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;REJECTED (junk lead)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="140" x="1360" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E65100;strokeColor=#E65100;fontColor=#FFFFFF;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=0;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;LAYER 2&lt;/font&gt;" vertex="1">
+          <mxGeometry height="165" width="62" x="50" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontColor=#1A1A2E;align=center;verticalAlign=top;arcSize=5;strokeWidth=2;" value="&lt;b style=&quot;color: rgb(230, 81, 0);&quot;&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;XGBoost Machine Learning Model&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Trained on 71 validated leads&amp;nbsp;&amp;nbsp;|20000 synthetic leads |&amp;nbsp;87% AUC&amp;nbsp; | 81.3% hold out accuracy&lt;br&gt;Features: title seniority, email domain quality, company size signal, data completeness score&lt;br&gt;Threshold: score ≥ 0.50 → PASS  |  Outputs: probability score + feature importance&lt;br&gt;Retrained via /api/v1/ai/train-ml endpoint&lt;/font&gt;" vertex="1">
+          <mxGeometry height="165" width="1165" x="122" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E65100;strokeColor=#E65100;fontColor=#FFFFFF;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;REJECTED (low ML score)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="105" width="140" x="1360" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6A1B9A;strokeColor=#6A1B9A;fontColor=#FFFFFF;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=0;" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;LAYER 3&lt;/font&gt;" vertex="1">
+          <mxGeometry height="165" width="62" x="50" y="578" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontColor=#1A1A2E;align=center;verticalAlign=top;arcSize=5;strokeWidth=2;" value="&lt;b style=&quot;color: rgb(106, 27, 154);&quot;&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Google Gemini 2.5 Flash — Primary AI Scorer&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Structured JSON prompt: lead data + company context + role seniority signals&lt;br&gt;Output: quality_score (0–100) · confidence · qualification_reason · improvement_suggestions&lt;br&gt;Threshold: quality_score ≥ 60 → PASS  |  Decision logged to quality_log.json for retraining&lt;/font&gt;" vertex="1">
+          <mxGeometry height="165" width="1165" x="122" y="578" as="geometry" />
+        </mxCell>
+        <mxCell id="12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6A1B9A;strokeColor=#6A1B9A;fontColor=#FFFFFF;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;REJECTED (low AI score)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="105" width="140" x="1360" y="608" as="geometry" />
+        </mxCell>
+        <mxCell id="13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D47A1;strokeColor=#0D47A1;fontColor=#FFFFFF;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;LAYER 4&lt;/font&gt;" vertex="1">
+          <mxGeometry height="72" width="62" x="50" y="776" as="geometry" />
+        </mxCell>
+        <mxCell id="14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontColor=#1A1A2E;align=center;verticalAlign=top;arcSize=5;strokeWidth=2;fontSize=12;fontStyle=1;verticalAlign=middle;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;Groq LLaMA-3 8B  —  Fallback AI Scorer  (activates only when Gemini is rate-limited or unavailable)   |   Same prompt template   |   Same threshold (≥60)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="72" width="1165" x="122" y="776" as="geometry" />
+        </mxCell>
+        <mxCell id="15" edge="1" parent="1" source="3" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#455A64;strokeWidth=2.5;fillColor=#455A64;" target="5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="16" edge="1" parent="1" source="5" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#455A64;strokeWidth=2.5;fillColor=#455A64;" target="8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="17" edge="1" parent="1" source="8" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#455A64;strokeWidth=2.5;fillColor=#455A64;" target="11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="18" edge="1" parent="1" source="11" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#455A64;strokeWidth=2.5;fillColor=#455A64;" target="14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="19" edge="1" parent="1" source="5" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#C62828;strokeWidth=2.5;fillColor=#C62828;" target="6" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;FAIL&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="20" edge="1" parent="1" source="8" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#E65100;strokeWidth=2.5;fillColor=#E65100;" target="9" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;FAIL&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="21" edge="1" parent="1" source="11" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none;strokeColor=#6A1B9A;strokeWidth=2.5;fillColor=#6A1B9A;" target="12" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;FAIL&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

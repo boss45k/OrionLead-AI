@@ -1,0 +1,229 @@
+# Alert Rules for OrionLead AI
+# Place this file at monitoring/alert-rules.yml
+# Reference in Prometheus config:
+#   rule_files:
+#     - 'alert-rules.yml'
+
+groups:
+  - name: "http_metrics"
+    interval: 30s
+    rules:
+      - alert: HighErrorRate
+        expr: rate(errors_total[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+          service: ai-lead-system
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value }} errors/sec (threshold: 0.05)"
+          runbook: "https://wiki.company.com/runbooks/high-error-rate"
+
+      - alert: SlowResponseTime
+        expr: histogram_quantile(0.95, http_request_duration_seconds) > 1.0
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "Slow response time detected"
+          description: "P95 latency is {{ $value }}s (threshold: 1.0s)"
+          runbook: "https://wiki.company.com/runbooks/slow-response"
+
+      - alert: HighHTTP5xxRate
+        expr: rate(http_requests_total{status_code=~"5.."}[5m]) > 0.02
+        for: 3m
+        labels:
+          severity: critical
+          service: ai-lead-system
+        annotations:
+          summary: "High 5xx error rate"
+          description: "5xx error rate is {{ $value }} errors/sec"
+
+      - alert: HighHTTP4xxRate
+        expr: rate(http_requests_total{status_code=~"4.."}[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "High 4xx error rate"
+          description: "4xx error rate is {{ $value }} errors/sec"
+
+  - name: "database_metrics"
+    interval: 30s
+    rules:
+      - alert: DatabaseConnectionPoolExhausted
+        expr: (db_connections_active / (db_connections_active + db_connections_pooled)) > 0.9
+        for: 1m
+        labels:
+          severity: critical
+          service: ai-lead-system
+        annotations:
+          summary: "Database connection pool exhausted"
+          description: "Pool usage is {{ $value | humanizePercentage }}"
+
+      - alert: HighDatabaseErrorRate
+        expr: rate(db_errors_total[5m]) > 0.01
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "High database error rate"
+          description: "Error rate is {{ $value }} errors/sec"
+
+      - alert: SlowDatabaseQueries
+        expr: histogram_quantile(0.95, db_query_duration_seconds) > 0.5
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "Slow database queries detected"
+          description: "P95 query latency is {{ $value }}s (threshold: 0.5s)"
+
+  - name: "cache_metrics"
+    interval: 30s
+    rules:
+      - alert: LowCacheHitRate
+        expr: (cache_hits_total / (cache_hits_total + cache_misses_total)) < 0.7
+        for: 10m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "Low cache hit rate"
+          description: "Cache hit rate is {{ $value | humanizePercentage }} (threshold: 70%)"
+
+      - alert: HighCacheEvictionRate
+        expr: rate(cache_evictions_total[5m]) > 10
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "High cache eviction rate"
+          description: "Evictions: {{ $value }} evictions/sec"
+
+  - name: "agent_metrics"
+    interval: 30s
+    rules:
+      - alert: LowQualificationSuccessRate
+        expr: (rate(agent_qualifications_total{status="success"}[5m]) / rate(agent_qualifications_total[5m])) < 0.8
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "Low qualification success rate"
+          description: "Success rate is {{ $value | humanizePercentage }} (threshold: 80%)"
+
+      - alert: HighQualificationLatency
+        expr: histogram_quantile(0.95, agent_qualification_duration_seconds) > 5.0
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "High qualification latency"
+          description: "P95 latency is {{ $value }}s (threshold: 5.0s)"
+
+      - alert: LLMAPIFailures
+        expr: rate(agent_llm_calls_total{status="failed"}[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: critical
+          service: ai-lead-system
+        annotations:
+          summary: "LLM API failures detected"
+          description: "Failure rate is {{ $value }} calls/sec"
+
+      - alert: HighLLMTokenCost
+        expr: rate(agent_llm_tokens_total[5m]) > 1000
+        for: 10m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "High LLM token consumption"
+          description: "Token rate is {{ $value }} tokens/sec"
+
+  - name: "authentication_metrics"
+    interval: 30s
+    rules:
+      - alert: HighLoginFailureRate
+        expr: (rate(auth_login_attempts_total{status="failed"}[5m]) / rate(auth_login_attempts_total[5m])) > 0.3
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "High login failure rate"
+          description: "Failure rate is {{ $value | humanizePercentage }} (threshold: 30%)"
+
+      - alert: HighInvalidTokens
+        expr: rate(auth_token_validations_total{status="invalid"}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "High invalid token rate"
+          description: "Rate is {{ $value }} validations/sec"
+
+  - name: "system_metrics"
+    interval: 30s
+    rules:
+      - alert: ServiceDown
+        expr: up{job="ai-lead-system"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: ai-lead-system
+        annotations:
+          summary: "Service is down"
+          description: "AI Lead System service is not responding"
+
+      - alert: ServiceCrashRestarts
+        expr: rate(system_uptime_seconds[5m]) < -0.01
+        for: 1m
+        labels:
+          severity: critical
+          service: ai-lead-system
+        annotations:
+          summary: "Service restarting frequently"
+          description: "Service uptime is decreasing rapidly"
+
+  - name: "celery_metrics"
+    interval: 30s
+    rules:
+      - alert: QueueBacklog
+        expr: celery_queue_size > 1000
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "Large celery queue backlog"
+          description: "Queue size: {{ $value }} tasks"
+
+      - alert: CeleryTaskFailures
+        expr: rate(celery_tasks_total{status="failed"}[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "High celery task failure rate"
+          description: "Failure rate: {{ $value }} tasks/sec"
+
+      - alert: SlowCeleryTasks
+        expr: histogram_quantile(0.95, celery_task_duration_seconds) > 30
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-lead-system
+        annotations:
+          summary: "Slow celery task execution"
+          description: "P95 duration: {{ $value }}s (threshold: 30s)"

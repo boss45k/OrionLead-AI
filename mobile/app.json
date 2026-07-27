@@ -1,0 +1,86 @@
+{
+  "expo": {
+    "name": "OrionLead AI",
+    "slug": "orionlead-ai",
+    "owner": "boss45k",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "com.orionlead.ai",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0f172a"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.orionlead.ai"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0f172a"
+      },
+      "package": "com.orionlead.ai",
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.CAMERA",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow OrionLead AI to access your photos to set a profile picture.",
+          "cameraPermission": "Allow OrionLead AI to use the camera to take a profile photo.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#6366f1",
+          "defaultChannel": "default",
+          "sounds": []
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "minSdkVersion": 24
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ccbf9b32-8f44-400f-adfa-875f443b5586"
+      },
+      "SUPABASE_URL": "https://hlskwjpsycfdhjnillib.supabase.co",
+      "SUPABASE_ANON_KEY": "sb_publishable_8gZ_bc26eBxtWvgp6V5jUw_4YN91986",
+      "API_BASE_URL": "http://127.0.0.1:5000",
+      "GOOGLE_ANDROID_CLIENT_ID": "656052458985-g0ubh4fes54uqb38vf1av9ufktf7h1i5.apps.googleusercontent.com",
+      "GOOGLE_DESKTOP_CLIENT_ID": "656052458985-oagn5hf1nefcngicdrmlvmb6rlfinsl8.apps.googleusercontent.com",
+      "GOOGLE_DESKTOP_CLIENT_SECRET": "REDACTED_SET_VIA_EXPO_GOOGLE_DESKTOP_CLIENT_SECRET_ENV_VAR"
+    }
+  }
+}

@@ -1,0 +1,940 @@
+{
+  "audit_metadata": {
+    "project": "AI-Lead-Collection-System",
+    "audit_date": "2026-03-31",
+    "scope": "Comprehensive full-stack codebase audit",
+    "overall_health_score": 6.5,
+    "deployment_readiness": "NOT_READY_FOR_PRODUCTION",
+    "readiness_for_uat": "READY_AFTER_CRITICAL_FIXES",
+    "audit_summary": "Well-engineered core with critical security issues and architectural confusion requiring immediate resolution"
+  },
+  "health_scores": {
+    "backend_api": 6.5,
+    "frontend": 7.5,
+    "mobile": 7.0,
+    "ai_ml_system": 7.0,
+    "devops_infrastructure": 5.0,
+    "overall": 6.7
+  },
+  "architecture_overview": {
+    "backend": {
+      "framework": "Flask 2.3.2",
+      "auth": "JWT (PyJWT 2.8.0)",
+      "database": "MySQL 8.0+ with SQLAlchemy 2.0.18",
+      "async_tasks": "Celery 5.3.1 + Redis 4.5.5",
+      "blueprints": 8,
+      "database_tables": 5,
+      "total_routes": 31,
+      "description": "Modular Flask app with blueprint-based routing, proper error handling, and structured logging"
+    },
+    "frontend": {
+      "framework": "React 18.2 + React Router 6.8",
+      "ui_library": "Ant Design 5.1",
+      "state_management": "localStorage + React hooks",
+      "pages": 7,
+      "components": 2,
+      "visualization": "Chart.js 3.9.1",
+      "description": "Professional React SPA with antd UI, responsive design, real-time lead management"
+    },
+    "mobile": {
+      "framework": "React Native",
+      "platforms": ["iOS", "Android"],
+      "description": "Mobile app for on-the-go lead management"
+    },
+    "ai_ml": {
+      "primary_engine": "Rule-based Lead Qualification (recommended)",
+      "secondary_engine": "Agent-based Architecture (duplicate - needs consolidation)",
+      "advanced_stack": "Ollama + spaCy + scikit-learn + FAISS (optional, partial integration)",
+      "llm_support": ["OpenAI", "Anthropic", "Local (Ollama)"],
+      "description": "Dual-path AI system with working qualification engine and optional ML stack"
+    }
+  },
+  "component_inventory": {
+    "backend_routes": [
+      {
+        "blueprint": "auth",
+        "file": "backend/app/routes/auth.py",
+        "endpoints": 3,
+        "key_endpoints": ["POST /api/v1/auth/register", "POST /api/v1/auth/login", "GET /api/v1/auth/profile"],
+        "status": "✅ Operational"
+      },
+      {
+        "blueprint": "leads",
+        "file": "backend/app/routes/leads.py",
+        "endpoints": 6,
+        "key_endpoints": ["GET/POST /api/v1/leads", "GET/PUT/DELETE /api/v1/leads/{id}", "POST /api/v1/leads/batch-qualify"],
+        "status": "✅ Operational"
+      },
+      {
+        "blueprint": "agents",
+        "file": "backend/app/routes/agents.py",
+        "endpoints": 3,
+        "key_endpoints": ["GET /api/v1/agents", "GET /api/v1/agents/status", "POST /api/v1/agents/qualify-lead"],
+        "status": "✅ Operational"
+      },
+      {
+        "blueprint": "ai",
+        "file": "backend/app/routes/ai.py",
+        "endpoints": 8,
+        "key_endpoints": ["GET /api/v1/ai/debug-ai-state", "POST /api/v1/ai/query"],
+        "status": "⚠️ Partial (LLM broken)"
+      },
+      {
+        "blueprint": "analytics",
+        "file": "backend/app/routes/analytics.py",
+        "endpoints": 4,
+        "status": "✅ Operational"
+      },
+      {
+        "blueprint": "debug",
+        "file": "backend/app/routes/debug.py",
+        "endpoints": 1,
+        "status": "⚠️ Unprotected - accessible without rate limiting"
+      },
+      {
+        "blueprint": "sources",
+        "file": "backend/app/routes/sources.py",
+        "endpoints": 3,
+        "status": "✅ Operational"
+      },
+      {
+        "blueprint": "settings",
+        "file": "backend/app/routes/settings.py",
+        "endpoints": 4,
+        "status": "✅ Operational"
+      }
+    ],
+    "backend_services": [
+      {
+        "name": "qualification_agent",
+        "file": "backend/app/services/qualification_agent.py",
+        "lines_of_code": 725,
+        "type": "Lead scoring engine",
+        "status": "✅ RECOMMENDED",
+        "features": ["Rule-based scoring", "Text analysis", "Batch processing", "Explainable reasoning"],
+        "performance": "<50ms per lead",
+        "note": "Prefer this implementation - simpler, tested, documented"
+      },
+      {
+        "name": "advanced_ai",
+        "file": "backend/app/services/advanced_ai.py",
+        "type": "ML stack wrapper",
+        "status": "⚠️ Partial",
+        "components": ["Ollama", "spaCy", "scikit-learn", "FAISS", "sentence-transformers"],
+        "issue": "Global state variables not thread-safe"
+      },
+      {
+        "name": "clearbit_service",
+        "file": "backend/app/services/clearbit_service.py",
+        "type": "Lead enrichment",
+        "status": "✅ Ready",
+        "methods": ["enrich_person", "enrich_company"]
+      },
+      {
+        "name": "data_service",
+        "file": "backend/app/services/data_service.py",
+        "type": "Data management",
+        "status": "✅ Ready"
+      }
+    ],
+    "backend_models": [
+      {
+        "file": "backend/app/models/models.py",
+        "type": "SQLAlchemy ORM",
+        "entities": ["User", "Lead", "LeadActivity", "DataSource", "ClassificationCategory"],
+        "status": "✅ Operational",
+        "total_fields": 40
+      },
+      {
+        "file": "backend/app/models/qualification_model.py",
+        "type": "scikit-learn ML Model",
+        "algorithm": "RandomForestClassifier",
+        "status": "✅ Ready",
+        "features": 10,
+        "optional": true
+      }
+    ],
+    "backend_agents": [
+      {
+        "name": "QualificationAgent",
+        "locations": [
+          "backend/app/services/qualification_agent.py (✅ RECOMMENDED)",
+          "backend/app/agents/qualification_agent.py (⚠️ DUPLICATE)"
+        ],
+        "status": "⚠️ Duplicate - needs consolidation"
+      },
+      {
+        "name": "QueryAgent",
+        "file": "backend/app/agents/query_agent.py",
+        "status": "⚠️ Broken (depends on LLM API fix)"
+      },
+      {
+        "name": "AgentPool",
+        "file": "backend/app/agents/agent_pool.py",
+        "pattern": "Thread-safe Singleton",
+        "status": "⚠️ On-demand initialization (not eager)"
+      },
+      {
+        "name": "AgentRegistry",
+        "file": "backend/app/agents/agent_registry.py",
+        "status": "✅ Operational"
+      }
+    ],
+    "frontend_pages": [
+      {
+        "name": "Dashboard",
+        "file": "web/src/pages/Dashboard.jsx",
+        "status": "✅ Operational",
+        "features": ["KPI cards", "Charts", "Quick stats"]
+      },
+      {
+        "name": "LeadsPage",
+        "file": "web/src/pages/LeadsPage.jsx",
+        "status": "✅ Operational",
+        "features": ["Lead table", "Pagination", "Filtering", "CRUD operations"]
+      },
+      {
+        "name": "AIEngine",
+        "file": "web/src/pages/AIEngine.jsx",
+        "status": "✅ Operational",
+        "features": ["AI configuration", "Model status"]
+      },
+      {
+        "name": "Analytics",
+        "file": "web/src/pages/Analytics.jsx",
+        "status": "✅ Operational",
+        "features": ["Dynamic charts", "Time range filtering"]
+      },
+      {
+        "name": "Settings",
+        "file": "web/src/pages/Settings.jsx",
+        "status": "✅ Operational"
+      },
+      {
+        "name": "DataSources",
+        "file": "web/src/pages/DataSources.jsx",
+        "status": "✅ Operational"
+      },
+      {
+        "name": "Login",
+        "file": "web/src/pages/Login.jsx",
+        "status": "✅ Operational"
+      }
+    ],
+    "frontend_services": [
+      {
+        "name": "api",
+        "file": "web/src/services/api.js",
+        "type": "Axios wrapper",
+        "status": "⚠️ Has mock data fallback",
+        "issue": "Returns stale mock data on API errors"
+      },
+      {
+        "name": "mockData",
+        "file": "web/src/services/mockData.js",
+        "type": "Test data",
+        "status": "Development only"
+      }
+    ]
+  },
+  "identified_issues": {
+    "summary": {
+      "critical": 5,
+      "high": 5,
+      "medium": 10,
+      "low": 5,
+      "total": 25
+    },
+    "critical_issues": [
+      {
+        "id": "CRIT-001",
+        "title": "OpenAI API Integration Broken",
+        "severity": "🔴 CRITICAL",
+        "file": "backend/app/llm/integration.py:166",
+        "issue": "openai.ChatCompletion doesn't exist in openai>=1.0 (using deprecated v0.x API)",
+        "impact": "QueryAgent crashes when trying to use LLM endpoints",
+        "affected_endpoints": ["/api/v1/ai/query"],
+        "root_cause": "OpenAI library upgraded but code not updated",
+        "fix_complexity": "LOW",
+        "fix_time_minutes": 30,
+        "code_change_required": "Update to new client API",
+        "priority": "CRITICAL"
+      },
+      {
+        "id": "CRIT-002",
+        "title": "Hardcoded Database Credentials in Source Code",
+        "severity": "🔴 CRITICAL",
+        "files": ["backend/config/config.py:12", "docker-compose.yml:8"],
+        "credentials_exposed": {
+          "database": "ai_lead_db",
+          "username": "root",
+          "password": "Aliali515$",
+          "host": "localhost",
+          "port": 3306
+        },
+        "issue": "Credentials visible in plain text in version control",
+        "impact": "Complete database compromise if repository is public",
+        "security_risk": "CRITICAL",
+        "fix_complexity": "LOW",
+        "fix_time_minutes": 15,
+        "required_actions": ["Delete from source", "Use .env variables", "Rotate database password", "Update infrastructure"],
+        "priority": "CRITICAL"
+      },
+      {
+        "id": "CRIT-003",
+        "title": "Duplicate QualificationAgent Implementation",
+        "severity": "🔴 CRITICAL",
+        "locations": [
+          "backend/app/services/qualification_agent.py (ORIGINAL - 725 lines, tested)",
+          "backend/app/agents/qualification_agent.py (NEWER - different architecture)"
+        ],
+        "issue": "Two different qualification implementations in parallel",
+        "imports_inconsistency": {
+          "leads.py": "imports from services",
+          "agents.py": "imports from agents",
+          "__init__.py": "registers from agents"
+        },
+        "impact": "Code path confusion, potential dead code, maintenance burden",
+        "architectural_debt": "HIGH",
+        "fix_complexity": "MEDIUM",
+        "fix_time_minutes": 60,
+        "resolution": "Choose ONE implementation (recommend services), delete the other, consolidate imports",
+        "priority": "CRITICAL"
+      },
+      {
+        "id": "CRIT-004",
+        "title": "Agent Pool Not Eagerly Initialized",
+        "severity": "🔴 CRITICAL",
+        "file": "backend/app/agents/agent_pool.py:157",
+        "pattern": "Lazy Singleton (on-demand)",
+        "issue": "Pool created on first request, not thread-safe during initialization",
+        "impact": "Race conditions under concurrent load, multiple pools created",
+        "concurrency_issue": "YES",
+        "fix_complexity": "MEDIUM",
+        "fix_time_minutes": 30,
+        "solution": "Initialize pool eagerly in app/__init__.py on startup",
+        "priority": "CRITICAL"
+      },
+      {
+        "id": "CRIT-005",
+        "title": "Advanced AI Stack Global State Not Thread-Safe",
+        "severity": "🔴 CRITICAL",
+        "file": "backend/app/services/advanced_ai.py",
+        "global_state": [
+          "_ollama_client = None",
+          "_spacy_nlp = None",
+          "_ml_model = None",
+          "_faiss_dedup = None",
+          "_embedder = None"
+        ],
+        "issue": "Global variables without synchronization for multi-threaded access",
+        "impact": "Concurrent requests may reinitialize components, memory leaks, unpredictable behavior",
+        "threading_issue": "YES",
+        "fix_complexity": "MEDIUM",
+        "fix_time_minutes": 90,
+        "solution": "Use thread-local storage, context managers, or request-scoped initialization",
+        "priority": "CRITICAL"
+      }
+    ],
+    "high_issues": [
+      {
+        "id": "HIGH-001",
+        "title": "Mock Data Fallback in Production Code",
+        "severity": "🟠 HIGH",
+        "file": "web/src/services/api.js:46-52",
+        "issue": "API errors can silently use mock data instead of showing errors",
+        "impact": "Users see outdated/incorrect data when backend is unavailable",
+        "production_risk": "MEDIUM -> HIGH if deployed",
+        "fix_complexity": "LOW",
+        "fix_time_minutes": 45,
+        "solution": "Remove mock fallback, show proper error UI to users"
+      },
+      {
+        "id": "HIGH-002",
+        "title": "No JWT Token Refresh Mechanism",
+        "severity": "🟠 HIGH",
+        "file": "backend/app/routes/auth.py",
+        "issue": "JWT tokens expire after 24h (default), no refresh token support",
+        "impact": "Long-session users suddenly logged out",
+        "user_experience": "POOR",
+        "fix_complexity": "MEDIUM",
+        "fix_time_minutes": 120,
+        "solution": "Implement refresh token endpoint, sliding expiration"
+      },
+      {
+        "id": "HIGH-003",
+        "title": "Database Connection Pool May Deadlock Under Load",
+        "severity": "🟠 HIGH",
+        "file": "backend/config/config.py:20-27",
+        "pool_config": {
+          "pool_size": 20,
+          "max_overflow": 40,
+          "total_max": 60
+        },
+        "issue": "Pool sizing not validated against MySQL max_connections",
+        "impact": "Request queue exhaustion, timeout errors under high load",
+        "performance_risk": "MEDIUM",
+        "fix_complexity": "MEDIUM",
+        "fix_time_minutes": 60,
+        "solution": "Load test, verify MySQL settings, adjust pool_size"
+      },
+      {
+        "id": "HIGH-004",
+        "title": "Batch Operation Timeout Risk",
+        "severity": "🟠 HIGH",
+        "file": "backend/app/routes/leads.py",
+        "endpoint": "POST /api/v1/leads/batch-qualify",
+        "issue": "Batch endpoint accepts 100 leads with no timeout/async queue",
+        "calculation": "100 leads × 50ms = 5 seconds minimum",
+        "impact": "Slow requests could exhaust server thread pool",
+        "production_risk": "MEDIUM",
+        "fix_complexity": "MEDIUM",
+        "fix_time_minutes": 60,
+        "solution": "Add async task queuing, batch size validation, timeout handling"
+      },
+      {
+        "id": "HIGH-005",
+        "title": "Clearbit Enrichment Fails Silently",
+        "severity": "🟠 HIGH",
+        "file": "backend/app/services/clearbit_service.py",
+        "issue": "No validation if CLEARBIT_API_KEY is missing at startup",
+        "impact": "Enrichment returns empty silently, misleading data quality",
+        "data_quality_impact": "MEDIUM",
+        "fix_complexity": "LOW",
+        "fix_time_minutes": 30,
+        "solution": "Add startup validation, explicit error handling"
+      }
+    ],
+    "medium_issues": [
+      {
+        "id": "MED-001",
+        "title": "Unused Dependencies",
+        "items": ["flasgger", "flask-restx"],
+        "issue": "Not used in codebase, increases attack surface",
+        "fix_time_minutes": 15
+      },
+      {
+        "id": "MED-002",
+        "title": "Limited Database Migrations",
+        "files": ["database/migrations/001_initial_schema.sql"],
+        "issue": "Only 1 migration file for entire project",
+        "fix_time_minutes": 120,
+        "solution": "Implement Alembic for version-controlled migrations"
+      },
+      {
+        "id": "MED-003",
+        "title": "No Query Result Caching",
+        "files": ["backend/app/utils/query_cache.py"],
+        "issue": "Caching utility exists but not used; every query hits database",
+        "fix_time_minutes": 90,
+        "solution": "Implement Redis caching for frequent queries"
+      },
+      {
+        "id": "MED-004",
+        "title": "Frontend Auth Missing Proactive Token Refresh",
+        "files": ["web/src/services/api.js", "web/src/pages/Login.jsx"],
+        "issue": "Only reacts to 401 errors, no proactive refresh",
+        "fix_time_minutes": 60,
+        "solution": "Add token refresh interceptor before expiration"
+      },
+      {
+        "id": "MED-005",
+        "title": "Inconsistent Error Handling Strategy",
+        "issue": "Mix of @handle_exceptions decorator and inline try/except",
+        "fix_time_minutes": 120,
+        "solution": "Standardize on decorator-based error handling"
+      },
+      {
+        "id": "MED-006",
+        "title": "No Rate Limiting on Debug Endpoints",
+        "files": ["backend/app/routes/debug.py"],
+        "issue": "POST /api/v1/debug/test-login has no rate limit",
+        "fix_time_minutes": 30,
+        "solution": "Add rate limiting or disable in production"
+      },
+      {
+        "id": "MED-007",
+        "title": "Hardcoded CORS Origins in Default Config",
+        "files": ["backend/app/__init__.py:35-39"],
+        "issue": "Default includes localhost (OK for dev, bad for prod)",
+        "fix_time_minutes": 15,
+        "solution": "Use environment variable with secure default"
+      },
+      {
+        "id": "MED-008",
+        "title": "npm Package Versions Not Pinned",
+        "files": ["web/package.json"],
+        "issue": "Uses ^ (compatible) instead of == (exact versions)",
+        "fix_time_minutes": 30,
+        "impact": "Allows breaking changes in dependencies"
+      },
+      {
+        "id": "MED-009",
+        "title": "Secret Key Must Be Changed in Production",
+        "files": ["backend/config/config.py"],
+        "default_secret": "'dev-secret-key-change-in-production'",
+        "issue": "Default is obvious, must be verified changed",
+        "fix_time_minutes": 10
+      },
+      {
+        "id": "MED-010",
+        "title": "Batch Input Validation Incomplete",
+        "files": ["backend/app/routes/leads.py"],
+        "issue": "No consistent max batch size enforcement",
+        "fix_time_minutes": 45
+      }
+    ],
+    "low_issues": [
+      {
+        "id": "LOW-001",
+        "title": "Duplicate Code in Routes",
+        "issue": "Lead filtering logic appears in multiple routes",
+        "fix_time_minutes": 60,
+        "solution": "Extract to utility function"
+      },
+      {
+        "id": "LOW-002",
+        "title": "Unused File",
+        "file": "backend/app/models/qualification_model.py",
+        "issue": "scikit-learn model exists but not fully integrated",
+        "fix_time_minutes": 30
+      },
+      {
+        "id": "LOW-003",
+        "title": "Missing Docstrings on Utility Functions",
+        "fix_time_minutes": 120
+      },
+      {
+        "id": "LOW-004",
+        "title": "Inconsistent Function Naming",
+        "issue": "get_limiter() vs limiter.limit() inconsistency",
+        "fix_time_minutes": 45
+      },
+      {
+        "id": "LOW-005",
+        "title": "Incomplete Test Suite",
+        "files": ["backend/tests/"],
+        "issue": "Test structure exists but minimal implementation",
+        "fix_time_minutes": 240,
+        "coverage_target": "80%"
+      }
+    ]
+  },
+  "code_quality": {
+    "overall_assessment": "GOOD with CRITICAL ISSUES",
+    "strengths": [
+      "Well-organized folder structure with clear separation of concerns",
+      "Professional error handling with custom exception classes",
+      "Comprehensive request/response validation with Marshmallow",
+      "Good API documentation standards",
+      "Proper database design with normalization and indexes",
+      "Security features present (JWT, rate limiting, CORS)"
+    ],
+    "weaknesses": [
+      "Architectural confusion with dual qualification agent implementations",
+      "Global state management not thread-safe",
+      "Missing production hardening (debug endpoints, credentials)",
+      "Incomplete advanced AI stack integration",
+      "Insufficient test coverage of critical logic",
+      "Frontend state management could be improved (localStorage -> Redux)"
+    ],
+    "security_concerns": [
+      {
+        "finding": "Hardcoded credentials in source code",
+        "severity": "CRITICAL",
+        "exposure": "MySQL password visible"
+      },
+      {
+        "finding": "Mock data in production code",
+        "severity": "HIGH",
+        "exposure": "Stale data served to users"
+      },
+      {
+        "finding": "Debug endpoints accessible",
+        "severity": "HIGH",
+        "exposure": "Information disclosure"
+      },
+      {
+        "finding": "JWT token stored in localStorage",
+        "severity": "MEDIUM",
+        "exposure": "XSS vulnerable"
+      },
+      {
+        "finding": "No CSRF protection on POST endpoints",
+        "severity": "MEDIUM",
+        "exposure": "Cross-site request forgery possible"
+      }
+    ]
+  },
+  "ai_system_status": {
+    "lead_qualification_engine": {
+      "status": "✅ OPERATIONAL",
+      "version": "1.0.0",
+      "implementation": "Rule-based scoring with text analysis",
+      "location": "backend/app/services/qualification_agent.py",
+      "lines_of_code": 725,
+      "production_readiness": "READY",
+      "performance": {
+        "single_lead_ms": 50,
+        "batch_100_leads_ms": "150-200",
+        "throughput_per_second": 20
+      },
+      "features": {
+        "batch_processing": true,
+        "explainable_scores": true,
+        "offline_capable": true,
+        "confidence_scoring": true
+      },
+      "output": {
+        "score_range": "0-100",
+        "categories": ["HOT", "WARM", "COLD", "UNQUALIFIED"]
+      },
+      "scoring_dimensions": {
+        "company_fit": {
+          "weight": "25%",
+          "components": ["Industry", "Size", "Reputation"],
+          "max_points": 40
+        },
+        "budget_indicators": {
+          "weight": "25%",
+          "components": ["Budget level", "Decision authority", "Revenue"],
+          "max_points": 40
+        },
+        "pain_points": {
+          "weight": "30%",
+          "components": ["Efficiency", "Cost", "Scaling", "Integration", "Analytics", "Automation", "Collaboration", "Security"],
+          "max_points": 30
+        },
+        "contact_quality": {
+          "weight": "20%",
+          "components": ["Email", "Phone", "Name", "Verification"],
+          "max_points": 20
+        }
+      },
+      "api_endpoints": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/leads/{lead_id}/qualify",
+          "type": "Single lead"
+        },
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/leads/batch-qualify",
+          "type": "Batch (up to 100 leads)"
+        }
+      ]
+    },
+    "advanced_ai_stack": {
+      "status": "⚠️ PARTIAL INTEGRATION",
+      "overall_readiness": "OPTIONAL",
+      "components": {
+        "ollama": {
+          "status": "Optional",
+          "library_version": "0.1.39",
+          "model": "Mistral 7B",
+          "use_case": "Local LLM inference",
+          "required_external_install": true,
+          "integration_status": "Fallback supported"
+        },
+        "spacy": {
+          "status": "Optional",
+          "library_version": "3.8.0",
+          "model": "en_core_web_sm",
+          "use_case": "NLP, entity extraction",
+          "integration_status": "Auto-loads if available"
+        },
+        "scikit_learn": {
+          "status": "Ready",
+          "library_version": "1.3.0",
+          "model": "RandomForestClassifier",
+          "use_case": "ML classification",
+          "integration_status": "Learning model, optional"
+        },
+        "faiss": {
+          "status": "Not integrated",
+          "library_version": "1.7.4",
+          "use_case": "Vector similarity search",
+          "integration_status": "Could enable lead deduplication"
+        },
+        "sentence_transformers": {
+          "status": "Not integrated",
+          "library_version": "3.0.1",
+          "use_case": "Text embeddings",
+          "integration_status": "Could enable semantic matching"
+        }
+      },
+      "issues": {
+        "global_state_not_thread_safe": true,
+        "initialization_scattered": true,
+        "fallback_handling_incomplete": true
+      }
+    },
+    "llm_integration": {
+      "status": "⚠️ BROKEN",
+      "critical_issue": "OpenAI API version mismatch",
+      "api_version_in_code": "0.x (deprecated)",
+      "api_version_installed": "1.3.0 (incompatible)",
+      "error": "openai.ChatCompletion not found in v1.x",
+      "providers": {
+        "openai": {
+          "status": "⚠️ Broken",
+          "model_default": "gpt-4",
+          "requires_api_key": true
+        },
+        "anthropic": {
+          "status": "⚠️ Not tested",
+          "model_default": "claude-3-opus-20240229",
+          "requires_api_key": true
+        },
+        "local_ollama": {
+          "status": "⚠️ Optional",
+          "model": "Mistral 7B",
+          "requires_local_install": true
+        }
+      },
+      "fallback_chain": ["Advanced AI", "OpenAI", "Anthropic", "Local ML"],
+      "affected_endpoints": [
+        "POST /api/v1/ai/query"
+      ]
+    },
+    "lead_classification": {
+      "status": "✅ OPERATIONAL",
+      "categories": {
+        "HOT": {
+          "score_range": "80-100",
+          "icon": "🔥",
+          "action": "Call today",
+          "urgency": "IMMEDIATE"
+        },
+        "WARM": {
+          "score_range": "60-79",
+          "icon": "⚡",
+          "action": "Email within 48h",
+          "urgency": "HIGH"
+        },
+        "COLD": {
+          "score_range": "40-59",
+          "icon": "❄️",
+          "action": "Nurture campaign",
+          "urgency": "MEDIUM"
+        },
+        "UNQUALIFIED": {
+          "score_range": "0-39",
+          "icon": "⛔",
+          "action": "Archive",
+          "urgency": "LOW"
+        }
+      }
+    }
+  },
+  "recommendations": {
+    "critical_fixes_required": 5,
+    "high_priority_fixes": 5,
+    "total_estimated_hours": 14.5,
+    "estimated_calendar_days": "1-2 sprints",
+    "critical": [
+      {
+        "rank": 1,
+        "title": "Fix OpenAI API Integration",
+        "estimated_hours": 0.5,
+        "complexity": "LOW",
+        "description": "Update LLM integration to use new OpenAI client API",
+        "blocking": ["QueryAgent", "LLM endpoints"],
+        "action_items": [
+          "Update LLM integration code to use client API",
+          "Add version constraint to requirements.txt"
+        ]
+      },
+      {
+        "rank": 2,
+        "title": "Remove Hardcoded Database Credentials",
+        "estimated_hours": 0.25,
+        "complexity": "LOW",
+        "description": "Move credentials to environment variables",
+        "security_risk": "CRITICAL",
+        "action_items": [
+          "Update config.py to use env variables",
+          "Update docker-compose.yml",
+          "Rotate database password",
+          "Add .env to .gitignore"
+        ]
+      },
+      {
+        "rank": 3,
+        "title": "Consolidate Qualification Agent",
+        "estimated_hours": 1.0,
+        "complexity": "MEDIUM",
+        "description": "Choose one implementation, delete duplicate",
+        "architectural_debt": "HIGH",
+        "recommendation": "Keep services version (simpler, tested)",
+        "action_items": [
+          "Delete backend/app/agents/qualification_agent.py",
+          "Update agents.py route to use services version",
+          "Update __init__.py registration",
+          "Document decision"
+        ]
+      },
+      {
+        "rank": 4,
+        "title": "Initialize Agent Pool Eagerly",
+        "estimated_hours": 0.5,
+        "complexity": "MEDIUM",
+        "description": "Eagerly initialize pool on app startup",
+        "threading_issue": "YES",
+        "action_items": [
+          "Move pool initialization to app/__init__.py",
+          "Add startup test to verify pool",
+          "Remove on-demand initialization"
+        ]
+      },
+      {
+        "rank": 5,
+        "title": "Fix Advanced AI Stack Thread Safety",
+        "estimated_hours": 1.5,
+        "complexity": "MEDIUM",
+        "description": "Refactor global state with proper synchronization",
+        "concurrency_issue": "YES",
+        "action_items": [
+          "Replace global variables with thread-local storage",
+          "Add locks for shared resources",
+          "Or use request-scoped context managers"
+        ]
+      }
+    ],
+    "high_priority": [
+      {
+        "rank": 6,
+        "title": "Remove Mock Data Fallback",
+        "estimated_hours": 0.75,
+        "complexity": "LOW"
+      },
+      {
+        "rank": 7,
+        "title": "Add JWT Token Refresh",
+        "estimated_hours": 2.0,
+        "complexity": "MEDIUM"
+      },
+      {
+        "rank": 8,
+        "title": "Implement Query Result Caching",
+        "estimated_hours": 1.5,
+        "complexity": "MEDIUM"
+      },
+      {
+        "rank": 9,
+        "title": "Secure Debug Endpoints",
+        "estimated_hours": 0.5,
+        "complexity": "LOW"
+      },
+      {
+        "rank": 10,
+        "title": "Add Comprehensive Unit Tests",
+        "estimated_hours": 4.0,
+        "complexity": "HIGH",
+        "target_coverage": "80%"
+      }
+    ],
+    "implementation_timeline": {
+      "phase_1_critical": {
+        "duration_days": 1,
+        "fixes": 5,
+        "hours": 4,
+        "focus": "System-breaking issues"
+      },
+      "phase_2_high": {
+        "duration_days": 2,
+        "fixes": 5,
+        "hours": 8.5,
+        "focus": "Important functionality"
+      },
+      "phase_3_medium": {
+        "duration_days": 3,
+        "fixes": 10,
+        "hours": "varies",
+        "focus": "Code quality and best practices"
+      }
+    }
+  },
+  "deployment_readiness": {
+    "current_status": "NOT_READY_FOR_PRODUCTION",
+    "blockers": [
+      "Critical security issues (hardcoded credentials)",
+      "Architectural confusion (dual agents)",
+      "Thread-safety issues (global state)",
+      "API incompatibility (OpenAI)",
+      "Missing comprehensive tests"
+    ],
+    "uat_readiness": "READY_AFTER_CRITICAL_FIXES",
+    "production_prerequisites": [
+      {
+        "item": "Resolve 5 critical issues",
+        "status": "REQUIRED"
+      },
+      {
+        "item": "Security hardening review",
+        "status": "REQUIRED"
+      },
+      {
+        "item": "Load testing with connection pools",
+        "status": "REQUIRED"
+      },
+      {
+        "item": "Database connection pool verification",
+        "status": "REQUIRED"
+      },
+      {
+        "item": "Rate limiting review",
+        "status": "REQUIRED"
+      },
+      {
+        "item": "Secret key management (not dev default)",
+        "status": "REQUIRED"
+      },
+      {
+        "item": "Secrets rotation (database password, API keys)",
+        "status": "REQUIRED"
+      },
+      {
+        "item": "Incident response procedures",
+        "status": "RECOMMENDED"
+      }
+    ],
+    "component_readiness": {
+      "core_functionality": "✅ READY",
+      "api_structure": "✅ READY",
+      "database_layer": "✅ READY",
+      "authentication": "✅ READY",
+      "ai_qualification": "✅ READY",
+      "advanced_features": "⚠️ PARTIAL",
+      "security": "❌ NOT_READY",
+      "devops_monitoring": "⚠️ PARTIAL",
+      "testing": "⚠️ MINIMAL"
+    }
+  },
+  "summary": {
+    "overall_assessment": "Well-engineered full-stack application with solid core functionality and sophisticated lead qualification capabilities. Critical security and architectural issues require immediate attention before any deployment.",
+    "key_strengths": [
+      "Robust lead qualification engine (rule-based, <50ms)",
+      "Professional API design with proper error handling",
+      "Comprehensive input validation",
+      "Good database design and normalization",
+      "Clean code organization with blueprints"
+    ],
+    "key_weaknesses": [
+      "Hardcoded credentials (critical security)",
+      "Duplicate agent architectures creating confusion",
+      "Thread-unsafe global state in AI stack",
+      "OpenAI API incompatibility (LLM broken)",
+      "Insufficient test coverage"
+    ],
+    "next_steps": [
+      "1. Fix 5 critical issues (4 hours)",
+      "2. Resolve high-priority items (8.5 hours)",
+      "3. Conduct security audit",
+      "4. Load testing and optimization",
+      "5. UAT with stakeholders",
+      "6. Production deployment planning"
+    ],
+    "estimated_to_production": "2-3 weeks for small team"
+  }
+}
